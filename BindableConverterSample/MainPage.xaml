@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BindableConverterSample.MainPage"
+             xmlns:converters="clr-namespace:BindableConverterSample">
+
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Welcome"
+                   HorizontalTextAlignment="Center"
+                   TextColor="White"
+                   FontSize="36"/>
+        </Frame>
+
+        <Label Text="{Binding Name}"
+               FontSize="Title"
+               Padding="16"
+               x:Name="CustomerLabel">
+             <Label.TextColor>
+                  <MultiBinding>
+                    <Binding Path="Age"  />
+                    <Binding Path="Name" />
+                    <Binding Path="IsAdmin" />
+                     <MultiBinding.Converter>
+                            <converters:MultiBindingToColorConverter/>
+                     </MultiBinding.Converter>
+                </MultiBinding>
+             </Label.TextColor>
+        </Label>
+
+        <Entry Text="{Binding Name}"
+               Placeholder="Name"
+               Margin="16"/>
+
+        <Entry Text="{Binding Age}"
+               Placeholder="Age"
+               Margin="16"/>
+
+        <Label Text="IsAdmin"
+               Margin="16"/>
+
+        <Switch IsToggled="{Binding IsAdmin}"
+                Margin="16"/>
+    </StackLayout>
+</ContentPage>
