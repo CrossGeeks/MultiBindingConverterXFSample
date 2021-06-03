@@ -1,5 +1,3 @@
-# MultiBindingConverterXFSample
-
 # MultiBinding Converter Xamarin Forms Sample
 
 <p align="center">
